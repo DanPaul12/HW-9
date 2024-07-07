@@ -1,18 +1,20 @@
-
-
 task_list = []
 
-def add_task(task):
-    task_list.append(task)
+def add_task(new_task):
+    task_list.append(f"{new_task}: incomplete")
+    print(f"Great, {new_task} added to your To-Do List")
 
 def view_tasks():
-    print[task_list]
+    print("Your To-Do list is as follows: \n")
+    for task in task_list:
+        print(f"{task}")
 
 def task_complete():
     pass
 
-def delete_task():
-    pass
+def delete_task(task):
+    for task in task_list:
+        task_list.remove(task)
 
 
 while True:
@@ -21,7 +23,6 @@ while True:
         try:
             new_task = input("What is your new task? ")
             add_task(new_task)
-            print(f"Great, {new_task} added to your To-Do List")
         except ValueError:
             print("Words only please")
     elif command_choice == 2:
@@ -34,7 +35,17 @@ while True:
             view_tasks()
         except:
             pass
-
-
-    
-
+    elif command_choice == 4:
+        try:
+           deleted_task = input("Which task would you like to delete?")
+           delete_task(f"{deleted_task}: Incomplete")
+        except:
+            pass
+    elif command_choice == 5:
+        try:
+            print("Toodaloo, thanks for to-doing!")
+            break
+        except:
+            pass
+    else:
+        print("Invalid input, please print a number 1-5: ")
